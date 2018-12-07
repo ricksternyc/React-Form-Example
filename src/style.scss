@@ -89,7 +89,7 @@ h4,
 h5 {
     font-family: 'robotobold';
     line-height: 1.2em;
-    padding-bottom: .5em;
+    padding-bottom: .5rem;
 }
 
 a,
@@ -120,7 +120,7 @@ p {
         right: 0;
         bottom: 0;
         left: 0;
-        height: 100vh;
+        min-height: 100vh;
         z-index: 1;
         background-image:
             linear-gradient(0deg, rgba(2,0,36,1) 21%, rgba(179,92,66,1) 75%, rgba(70,61,57,1) 97%, rgba(54,56,56,1) 100%);
@@ -140,7 +140,7 @@ p {
 .stamp-container {
     position: relative;
     z-index: 1;
-    padding: 2em 10em;
+    padding: 2rem 10rem;
 
     @media (max-width: 1140px) {
         padding: 1rem .2rem ;
@@ -152,7 +152,6 @@ p {
     justify-content: space-between;
     align-items: center;
     list-style: none;
-
 
     .logo-container img {
 
@@ -215,7 +214,7 @@ p {
             }
 
             li {
-                padding-bottom: .5em;
+                padding-bottom: .5rem;
             }
 
             .mobile-list {
@@ -249,8 +248,6 @@ p {
     }
 }
 
-// Sign up form component
-
 .body-container {
     height: 80vh;
     display: flex;
@@ -266,6 +263,7 @@ p {
     }
 }
 
+//Content
 #content-component {
     box-sizing: border-box;
     width: 360px;
@@ -291,6 +289,7 @@ p {
     }
 }
 
+// Sign up form component
 #form-component {
     justify-content: flex-end;
 }
@@ -343,8 +342,8 @@ p {
         width: 460px;
         height: 60px;
         color: #fff;
-        font-size: 1em;
-        padding: .5em;
+        font-size: 1rem;
+        padding: .5rem;
         border: none;
         transition: 0.4s;
 
@@ -354,7 +353,7 @@ p {
             outline: none;
 
             &::placeholder {
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 color: #fff;
             }
 
@@ -365,12 +364,14 @@ p {
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
             }
+
             &:nth-child(2) {
                 border-top: $border-middle;
                 border-right: $border-style;
                 border-bottom: $border-middle;
                 border-left: $border-style;
             }
+
             &:nth-child(3) {
                 border-left: $border-style;
                 border-right: $border-style;
@@ -397,7 +398,7 @@ p {
             &:hover {
                 background-color: #a9a9a9;
                 font-weight: bold;
-                font-size: 1.3em;
+                font-size: 1.3rem;
             }
             &:active {
                 background-color: $silver;
@@ -407,7 +408,7 @@ p {
 
     .eye-slash {  //input icon
         color: $silver;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         float: right;
         margin-right: 20px;
         margin-top: -50px;
@@ -416,6 +417,7 @@ p {
     }
 }
 
+//Footer
 #footer {
     display: flex;
     justify-content: space-between;

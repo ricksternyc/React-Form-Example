@@ -24,7 +24,6 @@ const Burger = () => (
         </div>
 
         <nav className="menu-container">
-
             <ul id="menu" className="nav-desktop">
                 <li><a href="#">About</a></li>
                 <li><a href="#">Integrations</a></li>
