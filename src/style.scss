@@ -1,0 +1,468 @@
+// Variables
+$silver: #c0c0c0;
+$active: #e67353;
+$border-style: 1.5px solid $silver;
+$border-middle: .8px solid $silver;
+
+//Reset
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+//Fonts
+@font-face {
+    font-family: 'robotolight';
+    src: url('./fonts/roboto-light-webfont.woff2') format('woff2'),
+        url('./fonts/roboto-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotomedium';
+    src: url('./fonts/roboto-medium-webfont.woff2') format('woff2'),
+        url('./fonts/roboto-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotobold';
+    src: url('./fonts/roboto-bold-webfont.woff2') format('woff2'),
+        url('./fonts/roboto-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'robotobold';
+    line-height: 1.2em;
+    padding-bottom: .5em;
+}
+
+a,
+ul,
+li {
+    font-family: 'robotomedium';
+    text-decoration: none;
+    list-style-type: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+body,
+p {
+    font-family: 'robotolight';
+}
+
+#background {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1;
+        background-image:
+            linear-gradient(0deg, rgba(2,0,36,1) 21%, rgba(179,92,66,1) 75%, rgba(70,61,57,1) 97%, rgba(54,56,56,1) 100%);
+        opacity: .4;
+        box-shadow: 1px 1px 12px 12px #000 inset;
+    }
+
+    @media (max-width: 1140px) {
+
+        &:before {
+            background-image: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.stamp-container {
+    position: relative;
+    z-index: 1;
+    padding: 2em 10em;
+
+    @media (max-width: 1140px) {
+        padding: 1rem .2rem ;
+    }
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+
+
+    .logo-container img {
+
+        @media (max-width: 1140px) {
+            width: 75px;
+            padding: 1rem;
+        }
+    }
+
+    nav {
+        box-sizing: content-box;
+        justify-content: flex-end;
+        color: #fff;
+
+        ul {
+            list-style-type: none;
+
+            li a {
+                font-family: 'robotolight';
+                font-size: 1.5rem;
+                margin-left: 1.6rem;
+
+                &:hover {
+                    font-family: 'robotomedium';
+                    color: $silver;
+                }
+
+                &:active {
+                    font-family: 'robotobold';
+                    color: $active;
+                }
+            }
+        }
+
+        .nav-desktop {
+            display: flex;
+        }
+
+        .nav-mobile {
+            display: none;
+        }
+
+        @media (max-width: 1140px) {
+
+            .nav-desktop {
+                display: none;
+            }
+
+            .menu-burger {
+                color: #fff;
+                font-size: 2em;
+            }
+
+            .nav-mobile {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                transition: 1s;
+            }
+
+            li {
+                padding-bottom: .5em;
+            }
+
+            .mobile-list {
+                opacity: 0;
+                visibility: hidden;
+                box-sizing: border-box;
+                padding: 1.5em;
+                border-radius: 5%;
+                background-color: #000;
+                position: relative;
+                top: 80px;
+                right: 10px;
+                text-align: right;
+                transition: opacity 600ms, visibility 600ms;
+            }
+
+            .active {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .navbar-toggle {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                cursor: pointer;
+                color: rgba(255,255,255,0.8);
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+// Sign up form component
+
+.body-container {
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 1140px) {
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+    }
+}
+
+#content-component {
+    box-sizing: border-box;
+    width: 360px;
+    color: #fff;
+
+    h1 {
+        font-size: 3.4rem;
+        margin: 0;
+
+        @media (max-width: 1140px) {
+            font-size: 2.5rem;
+            padding-top: 2rem;
+        }
+    }
+
+    p {
+        font-size: 1.2rem;
+
+        @media (max-width: 400px) {
+            margin: 0 2rem;
+            padding-bottom: 4rem;
+        }
+    }
+}
+
+#form-component {
+    justify-content: flex-end;
+}
+
+.sign-up-form {
+    box-sizing: border-box;
+    width: 480px;
+    text-align: center;
+    color: #fff;
+
+    @media (max-width: 1140px) {
+        width: 100%;
+        padding-top: .5rem;
+    }
+
+    h3 {
+        padding-bottom: 1rem;
+    }
+
+    .terms-txt {
+        padding-top: 1rem;
+
+        p {
+            color: $silver;
+            padding-bottom: .5rem;
+        }
+
+        @media (max-width: 1140px) {
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+
+    a {
+        color: #fff;
+
+        &:hover {
+            font-family: 'robotomedium';
+            color: $silver;
+        }
+
+        &:active {
+            font-family: 'robotobold';
+            color: $active;
+        }
+    } //end .sign-up-form
+
+    input {
+        display: block;
+        width: 460px;
+        height: 60px;
+        color: #fff;
+        font-size: 1em;
+        padding: .5em;
+        border: none;
+        transition: 0.4s;
+
+        &[type="text"],
+        &[type="password"] {
+            background-color: rgba(255,255,255, 0.3);
+            outline: none;
+
+            &::placeholder {
+                font-size: 1.5em;
+                color: #fff;
+            }
+
+            &:nth-child(1) {
+                border-top: $border-style;
+                border-left: $border-style;
+                border-right: $border-style;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+            &:nth-child(2) {
+                border-top: $border-middle;
+                border-right: $border-style;
+                border-bottom: $border-middle;
+                border-left: $border-style;
+            }
+            &:nth-child(3) {
+                border-left: $border-style;
+                border-right: $border-style;
+            }
+
+            @media (max-width: 1140px) {
+                width: 300px;
+            }
+        }
+
+        &[type="submit"] {
+            width: 480px;
+            height: 80px;
+            background-color: #2c99ed;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            outline: none;
+            cursor: pointer;
+
+            @media (max-width: 1140px) {
+                width: 320px;
+            }
+
+            &:hover {
+                background-color: #a9a9a9;
+                font-weight: bold;
+                font-size: 1.3em;
+            }
+            &:active {
+                background-color: $silver;
+            }
+        }
+    } //end input
+
+    .eye-slash {  //input icon
+        color: $silver;
+        font-size: 1.2em;
+        float: right;
+        margin-right: 20px;
+        margin-top: -50px;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding-top: 4%;
+
+    p {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 1140px) {
+        flex-direction: column-reverse;
+        text-align: center;
+
+        .footer-menu-container {
+            font-size: 13px;
+            padding-bottom: 4px;
+        }
+    }
+
+    .footer-menu {
+        display: flex;
+        padding-top: .5rem;
+
+        @media (max-width: 1140px) {
+            justify-content: center;
+        }
+
+        li a {
+            margin-left: 1rem;
+
+            @media (max-width: 1140px) {
+                margin-left: unset;
+                padding: 4px;
+                white-space: nowrap;
+                margin: auto;
+            }
+
+            &:hover {
+                font-family: 'robotomedium';
+                color: $silver;
+            }
+
+            &:active {
+                font-family: 'robotobold';
+                color: $active;
+            }
+        }
+    }
+}
